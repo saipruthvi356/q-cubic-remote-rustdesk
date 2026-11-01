@@ -2493,6 +2493,8 @@ pub fn rustdesk_interval(i: Interval) -> ThrottledInterval {
 }
 
 pub fn load_custom_client() {
+    // Q-CUBIC Remote: our own app name (used for window titles, folders and the Windows service).
+    *config::APP_NAME.write().unwrap() = "QCubicRemote".to_owned();
     #[cfg(debug_assertions)]
     if let Ok(data) = std::fs::read_to_string("./custom.txt") {
         read_custom_client(data.trim());
